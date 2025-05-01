@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Streak - USTP Study Hub</title>
+    <meta name="description" content="Track your productivity streak at USTP Study Hub." />
+    <meta name="author" content="USTP Study Hub" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/css/styles.css">
+    <!-- Include Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <!-- Header -->
+      <header class="header">
+        <div class="container header-container">
+          <div class="logo-container">
+            <button id="menu-toggle" class="menu-button">
+              <i class="fas fa-bars"></i>
+            </button>
+            <div>
+              <h1 class="logo">USTP Study Hub</h1>
+              <p class="tagline">Your personal study companion</p>
+            </div>
+          </div>
+          <nav class="main-nav">
+            <ul>
+              <li><a href="/index.html" class="nav-link">Dashboard</a></li>
+              <li><a href="/src/pages/streak.html" class="nav-link active">Streaks</a></li>
+              <li><a href="/src/pages/calendar.html" class="nav-link">Calendar</a></li>
+              <li><a href="#" class="nav-link">Resources</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <!-- Mobile Sidebar -->
+      <div id="mobile-sidebar" class="mobile-sidebar">
+        <div class="sidebar-header">
+          <h2>Menu</h2>
+          <button id="sidebar-close" class="close-button">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <nav class="sidebar-nav">
+          <ul>
+            <li><a href="/index.html">Dashboard</a></li>
+            <li><a href="/src/pages/streak.html">Streaks</a></li>
+            <li><a href="/src/pages/calendar.html">Calendar</a></li>
+            <li><a href="#">Resources</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div id="backdrop" class="backdrop"></div>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <div class="container">
+          <div class="welcome-section">
+            <h1>Activity Streaks</h1>
+            <p>Track your productivity and build consistent study habits.</p>
+          </div>
+          
+          <div class="grid-container">
+            <!-- Streak Stats Section -->
+            <div class="grid-item streak-stats-item">
+              <div class="card streak-card">
+                <div class="card-header">
+                  <div class="card-title">
+                    <i class="fas fa-fire"></i>
+                    <span>Your Streak</span>
+                  </div>
+                </div>
+                <div class="card-content">
+                  <div class="streak-display">
+                    <div class="streak-count">
+                      <span id="streak-count">0</span>
+                      <span class="streak-label">days</span>
+                    </div>
+                    <div class="streak-info">
+                      <p>Current Streak</p>
+                      <p>Last activity: <span id="last-activity">Never</span></p>
+                    </div>
+                  </div>
+                  <div class="streak-tip">
+                    <i class="fas fa-lightbulb"></i>
+                    <p>Complete any activity daily to build your streak. Don't break the chain!</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Activity History -->
+            <div class="grid-item streak-history-item">
+              <div class="card history-card">
+                <div class="card-header">
+                  <div class="card-title">
+                    <i class="fas fa-history"></i>
+                    <span>Activity History</span>
+                  </div>
+                </div>
+                <div class="card-content">
+                  <div id="streak-activity-list" class="streak-activity-list">
+                    <!-- Activities will be added dynamically -->
+                    <div class="empty-state">
+                      <p>No activities yet. Complete tasks to build your streak!</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="about-section">
+            <h2>About Streaks</h2>
+            <p>
+              Tracking your productivity helps build consistent study habits. Each day you complete a task, add a note, 
+              or use the Pomodoro timer, your streak grows. Try to maintain your streak by being active every day!
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <p>&copy; 2025 USTP Study Hub - Made for USTP CDO Students</p>
+      </footer>
+    </div>
+
+    <!-- Toast container for notifications -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Script Import -->
+    <script src="/src/js/main.js"></script>
+    <script src="/src/js/streak.js"></script>
+  </body>
+</html>

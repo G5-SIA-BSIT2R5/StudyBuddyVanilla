@@ -1,0 +1,211 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calendar - USTP Study Hub</title>
+    <meta name="description" content="Calendar and event planner for USTP CDO students." />
+    <meta name="author" content="USTP Study Hub" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/css/styles.css">
+    <!-- Include Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <!-- Header -->
+      <header class="header">
+        <div class="container header-container">
+          <div class="logo-container">
+            <button id="menu-toggle" class="menu-button">
+              <i class="fas fa-bars"></i>
+            </button>
+            <div>
+              <h1 class="logo">USTP Study Hub</h1>
+              <p class="tagline">Your personal study companion</p>
+            </div>
+          </div>
+          <nav class="main-nav">
+            <ul>
+              <li><a href="/index.html" class="nav-link">Dashboard</a></li>
+              <li><a href="/src/pages/streak.html" class="nav-link">Streaks</a></li>
+              <li><a href="/src/pages/calendar.html" class="nav-link active">Calendar</a></li>
+              <li><a href="#" class="nav-link">Resources</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <!-- Mobile Sidebar -->
+      <div id="mobile-sidebar" class="mobile-sidebar">
+        <div class="sidebar-header">
+          <h2>Menu</h2>
+          <button id="sidebar-close" class="close-button">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <nav class="sidebar-nav">
+          <ul>
+            <li><a href="/index.html">Dashboard</a></li>
+            <li><a href="/src/pages/streak.html">Streaks</a></li>
+            <li><a href="/src/pages/calendar.html">Calendar</a></li>
+            <li><a href="#">Resources</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div id="backdrop" class="backdrop"></div>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <div class="container">
+          <div class="welcome-section">
+            <h1>Calendar & Events</h1>
+            <p>Manage your schedule, deadlines, and important dates.</p>
+          </div>
+          
+          <div class="grid-container calendar-view">
+            <!-- Calendar Section -->
+            <div class="grid-item calendar-grid-item">
+              <div class="card calendar-card">
+                <div class="card-header">
+                  <div class="card-title">
+                    <i class="fas fa-calendar"></i>
+                    <span>Monthly Calendar</span>
+                  </div>
+                  <div class="calendar-navigation">
+                    <button id="prev-month" class="icon-button">
+                      <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <span id="month-year">May 2025</span>
+                    <button id="next-month" class="icon-button">
+                      <i class="fas fa-chevron-right"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="card-content">
+                  <div id="calendar-container" class="calendar-container">
+                    <div id="calendar-grid" class="calendar-grid">
+                      <!-- Calendar will be generated here -->
+                    </div>
+                  </div>
+                  <div class="calendar-legend">
+                    <div class="legend-item">
+                      <span class="legend-color assignment"></span>
+                      <span>Assignment</span>
+                    </div>
+                    <div class="legend-item">
+                      <span class="legend-color exam"></span>
+                      <span>Exam</span>
+                    </div>
+                    <div class="legend-item">
+                      <span class="legend-color meeting"></span>
+                      <span>Meeting</span>
+                    </div>
+                    <div class="legend-item">
+                      <span class="legend-color reminder"></span>
+                      <span>Reminder</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Events List -->
+            <div class="grid-item events-grid-item">
+              <div class="card events-card">
+                <div class="card-header">
+                  <div class="card-title">
+                    <i class="fas fa-list"></i>
+                    <span>Events & Deadlines</span>
+                  </div>
+                  <button id="add-event" class="btn btn-outline btn-sm">
+                    <i class="fas fa-plus"></i> New Event
+                  </button>
+                </div>
+                <div class="card-content">
+                  <div id="event-list" class="event-list">
+                    <!-- Events will be added dynamically -->
+                    <div class="empty-state">
+                      <p>No events for this month. Add an event to get started!</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Event Modal -->
+      <div id="event-modal" class="modal hidden">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 id="event-modal-title">Add Event</h2>
+            <button id="close-event-modal" class="close-button">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="event-form">
+              <div class="form-group">
+                <label for="event-title">Event Title <span class="required">*</span></label>
+                <input type="text" id="event-title" class="input" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="event-description">Description</label>
+                <textarea id="event-description" class="textarea" rows="3"></textarea>
+              </div>
+              
+              <div class="form-row">
+                <div class="form-group half">
+                  <label for="event-type">Type</label>
+                  <select id="event-type" class="input">
+                    <option value="assignment">Assignment</option>
+                    <option value="exam">Exam</option>
+                    <option value="meeting">Meeting</option>
+                    <option value="reminder">Reminder</option>
+                  </select>
+                </div>
+                
+                <div class="form-group half">
+                  <label for="event-time">Time</label>
+                  <input type="time" id="event-time" class="input" value="09:00">
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <button type="submit" class="btn btn-accent btn-full">
+                  <i class="fas fa-save"></i> Save Event
+                </button>
+              </div>
+            </form>
+            
+            <div class="current-events-section">
+              <h3>Current Events</h3>
+              <div id="current-events" class="current-events">
+                <!-- Current events for selected date will be displayed here -->
+                <p>No events for this day</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <p>&copy; 2025 USTP Study Hub - Made for USTP CDO Students</p>
+      </footer>
+    </div>
+
+    <!-- Toast container for notifications -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Script Import -->
+    <script src="/src/js/main.js"></script>
+    <script src="/src/js/calendar.js"></script>
+    <script src="/src/js/streak.js"></script>
+  </body>
+</html>

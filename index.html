@@ -21,6 +21,7 @@
 
   <body>
     <div class="wrapper">
+      <!-- Header -->
       <header class="header">
         <div class="container header-container">
           <div class="logo-container">
@@ -34,9 +35,10 @@
           </div>
           <nav class="main-nav">
             <ul>
-              <li><a href="#" class="nav-link">Dashboard</a></li>
+              <li><a href="index.html" class="nav-link active">Dashboard</a></li>
+              <li><a href="/src/pages/streak.html" class="nav-link">Streaks</a></li>
+              <li><a href="/src/pages/calendar.html" class="nav-link">Calendar</a></li>
               <li><a href="#" class="nav-link">Resources</a></li>
-              <li><a href="#" class="nav-link">Settings</a></li>
             </ul>
           </nav>
         </div>
@@ -52,9 +54,10 @@
         </div>
         <nav class="sidebar-nav">
           <ul>
-            <li><a href="#">Dashboard</a></li>
+            <li><a href="index.html">Dashboard</a></li>
+            <li><a href="/src/pages/streak.html">Streaks</a></li>
+            <li><a href="/src/pages/calendar.html">Calendar</a></li>
             <li><a href="#">Resources</a></li>
-            <li><a href="#">Settings</a></li>
           </ul>
         </nav>
       </div>
@@ -66,6 +69,15 @@
           <div class="welcome-section">
             <h1>Welcome to USTP Study Hub</h1>
             <p>Boost your productivity and manage your studies effectively.</p>
+            
+            <!-- Streak Stats Mini Banner -->
+            <div class="streak-mini-banner">
+              <div class="streak-mini-info">
+                <i class="fas fa-fire"></i>
+                <span>Current Streak: <strong id="streak-count">0</strong> days</span>
+              </div>
+              <a href="streak.html" class="btn btn-sm btn-outline">View Stats</a>
+            </div>
           </div>
           
           <div class="grid-container">
@@ -215,6 +227,6 @@
     <script src="/src/js/pomodoro.js"></script>
     <script src="/src/js/todo.js"></script>
     <script src="/src/js/notes.js"></script>
-    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
+    <script src="/src/js/streak.js"></script>
   </body>
 </html>
