@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>USTP Study Hub - Productivity App for USTP CDO Students</title>
+    <meta name="description" content="A productivity tool for USTP CDO students featuring a Pomodoro timer, to-do lists, and study notes." />
+    <meta name="author" content="USTP Study Hub" />
+    <meta property="og:title" content="USTP Study Hub" />
+    <meta property="og:description" content="A productivity tool for USTP CDO students featuring a Pomodoro timer, to-do lists, and study notes." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@ustp_hub" />
+    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <link rel="icon" href="/favicon.ico" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <div class="container header-container">
+          <div class="logo-container">
+            <button id="menu-toggle" class="menu-button">
+              <i class="fas fa-bars"></i>
+            </button>
+            <div>
+              <h1 class="logo">USTP Study Hub</h1>
+              <p class="tagline">Your personal study companion</p>
+            </div>
+          </div>
+          <nav class="main-nav">
+            <ul>
+              <li><a href="#" class="nav-link">Dashboard</a></li>
+              <li><a href="#" class="nav-link">Resources</a></li>
+              <li><a href="#" class="nav-link">Settings</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <!-- Mobile Sidebar -->
+      <div id="mobile-sidebar" class="mobile-sidebar">
+        <div class="sidebar-header">
+          <h2>Menu</h2>
+          <button id="sidebar-close" class="close-button">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <nav class="sidebar-nav">
+          <ul>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Resources</a></li>
+            <li><a href="#">Settings</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div id="backdrop" class="backdrop"></div>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <div class="container">
+          <div class="welcome-section">
+            <h1>Welcome to USTP Study Hub</h1>
+            <p>Boost your productivity and manage your studies effectively.</p>
+          </div>
+          
+          <div class="grid-container">
+            <!-- Pomodoro Timer Section -->
+            <div class="grid-item">
+              <div class="card timer-card">
+                <div class="card-header">
+                  <div class="card-title">
+                    <i class="fas fa-clock"></i>
+                    <span id="timer-title">Focus Timer</span>
+                  </div>
+                  <button id="timer-settings-btn" class="icon-button">
+                    <i class="fas fa-cog"></i>
+                  </button>
+                </div>
+                <div class="card-content">
+                  <div id="timer-display" class="timer-display">
+                    <div class="time">25:00</div>
+                    <div class="timer-info">
+                      <span>Focus time - Stay productive!</span>
+                      <div>Sessions completed: <span id="session-count">0</span></div>
+                    </div>
+                    <div class="timer-controls">
+                      <button id="timer-start" class="btn btn-primary">
+                        <i class="fas fa-play"></i> Start
+                      </button>
+                      <button id="timer-reset" class="btn btn-outline">
+                        <i class="fas fa-redo"></i> Reset
+                      </button>
+                    </div>
+                  </div>
+                  
+                  <div id="timer-settings" class="timer-settings hidden">
+                    <div class="setting-group">
+                      <label>Focus Time (minutes)</label>
+                      <div class="slider-container">
+                        <input type="range" id="focus-slider" min="5" max="60" step="5" value="25">
+                        <span id="focus-value">25</span>
+                      </div>
+                    </div>
+                    
+                    <div class="setting-group">
+                      <label>Break Time (minutes)</label>
+                      <div class="slider-container">
+                        <input type="range" id="break-slider" min="1" max="30" step="1" value="5">
+                        <span id="break-value">5</span>
+                      </div>
+                    </div>
+                    
+                    <button id="apply-settings" class="btn btn-full">
+                      Apply Settings
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Todo List Section -->
+            <div class="grid-item">
+              <div class="card todo-card">
+                <div class="card-header">
+                  <div class="card-title">
+                    <i class="fas fa-list-check"></i>
+                    <span>To-Do List</span>
+                  </div>
+                </div>
+                <div class="card-content">
+                  <div class="input-group">
+                    <input type="text" id="todo-input" placeholder="Add a new task..." class="input">
+                    <button id="add-todo" class="btn btn-outline icon-button">
+                      <i class="fas fa-plus"></i>
+                    </button>
+                  </div>
+                  
+                  <div id="todo-list" class="todo-list-container">
+                    <!-- Tasks will be added here dynamically -->
+                    <div class="empty-state">
+                      <p>No tasks yet. Add one to get started!</p>
+                    </div>
+                  </div>
+                  
+                  <div id="todo-stats" class="todo-stats hidden">
+                    <span>0 of 0 tasks completed</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Notes Section -->
+            <div class="grid-item">
+              <div class="card notes-card">
+                <div class="card-header">
+                  <div class="card-title">
+                    <i class="fas fa-book-open"></i>
+                    <span>Study Notes</span>
+                  </div>
+                  <button id="new-note-btn" class="btn btn-outline btn-sm">
+                    <i class="fas fa-plus"></i> New Note
+                  </button>
+                </div>
+                <div class="card-content">
+                  <div id="notes-list" class="notes-list">
+                    <!-- Notes will be added here dynamically -->
+                    <div class="empty-state">
+                      <p>No notes yet. Create one to get started!</p>
+                    </div>
+                  </div>
+                  
+                  <div id="note-editor" class="note-editor hidden">
+                    <input type="text" id="note-title" class="input" placeholder="Note title">
+                    <textarea id="note-content" class="textarea" placeholder="Write your note here..."></textarea>
+                    <div class="editor-controls">
+                      <button id="cancel-note" class="btn btn-outline">
+                        <i class="fas fa-times"></i> Cancel
+                      </button>
+                      <button id="save-note" class="btn btn-accent">
+                        <i class="fas fa-save"></i> Save
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="about-section">
+            <h2>About USTP Study Hub</h2>
+            <p>
+              This productivity tool was designed specifically for USTP CDO students to help you manage your study time, 
+              track your tasks, and keep organized notes for all your courses.
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <p>&copy; 2025 USTP Study Hub - Made for USTP CDO Students</p>
+      </footer>
+    </div>
+
+    <!-- Toast container for notifications -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Script Import -->
+    <script src="/src/js/main.js"></script>
+    <script src="/src/js/pomodoro.js"></script>
+    <script src="/src/js/todo.js"></script>
+    <script src="/src/js/notes.js"></script>
+    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
+  </body>
+</html>
